@@ -19,7 +19,6 @@ import lombok.AllArgsConstructor;
 public class CategoriaResources {
 	
 	private final CategoriaService service;
-
 	
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
