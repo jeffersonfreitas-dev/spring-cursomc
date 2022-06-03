@@ -69,7 +69,7 @@ public class Endereco implements Serializable{
 	}
 
 	public void setLogradouro(String logradouro) {
-		if(logradouro.isBlank()) throw new RequiredFieldIsNullException("Campo logradouro é obrigatório");
+		if(logradouro.equals("")) throw new RequiredFieldIsNullException("Campo logradouro é obrigatório");
 		this.logradouro = logradouro;
 	}
 

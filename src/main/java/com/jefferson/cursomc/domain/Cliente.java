@@ -78,7 +78,7 @@ public class Cliente implements Serializable{
 	}
 
 	public void setNome(String nome) {
-		if(nome.isBlank()) throw new RequiredFieldIsNullException("Campo nome é obrigatório");
+		if(nome.equals("")) throw new RequiredFieldIsNullException("Campo nome é obrigatório");
 		this.nome = nome;
 	}
 
