@@ -2,6 +2,10 @@ package com.jefferson.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -38,5 +43,12 @@ public class Pedido implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_endereco_entrega")
 	private Endereco endereco;
+	
+	@OneToMany(mappedBy = "id.produto")
+	private Set<PedidoItem> itens = new HashSet<>();
+	
+	public List<Produto> getProdutos(){
+		return itens.stream().map(i -> i.getId().getProduto()).collect(Collectors.toList());
+	}
 
 }
