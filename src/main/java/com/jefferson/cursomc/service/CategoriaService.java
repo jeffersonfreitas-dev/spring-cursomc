@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.jefferson.cursomc.domain.dto.CategoriaResponse;
+import com.jefferson.cursomc.exception.IDNotFoundException;
 import com.jefferson.cursomc.repository.CategoriaRepository;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +23,13 @@ public class CategoriaService {
 	public List<CategoriaResponse> findAll() {
 		return repository.findAll().stream()
 				.map(c -> mapper.map(c, CategoriaResponse.class)).collect(Collectors.toList());
+	}
+
+
+	public CategoriaResponse finById(Integer id) {
+		return repository.findById(id)
+				.map(c -> mapper.map(c, CategoriaResponse.class))
+				.orElseThrow(() -> new IDNotFoundException("ID não encontrado: " + id));
 	}
 	
 
