@@ -147,4 +147,27 @@ public class Endereco implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\nLOGRADOURO: ");
+		builder.append(logradouro);
+		builder.append(", nº ");
+		builder.append(numero);
+		builder.append(", COMPLEMENTO: ");
+		builder.append(complemento);
+		builder.append(", BAIRRO: ");
+		builder.append(bairro);
+		builder.append(", CEP: ");
+		builder.append(cep);
+		builder.append("\nCIDADE: ");
+		builder.append(cidade.getNome());
+		builder.append("/ ");
+		builder.append(cidade.getEstado().getNome());
+		builder.append("\n");
+		return builder.toString();
+	}
+	
+	
 }

@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.jefferson.cursomc.exception.RequiredFieldIsNullException;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -30,7 +28,7 @@ public class Categoria implements Serializable{
 	private List<Produto> produtos = new ArrayList<>();
 
 	public Categoria(String nome) {
-		this.setNome(nome);
+		this.nome = nome;
 	}
 
 	public Integer getId() {
@@ -46,7 +44,6 @@ public class Categoria implements Serializable{
 	}
 
 	public void setNome(String nome) {
-		if(nome.equals("")) throw new RequiredFieldIsNullException("Campo nome é obrigatório");
 		this.nome = nome;
 	}
 

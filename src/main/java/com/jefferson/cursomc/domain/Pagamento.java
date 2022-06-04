@@ -12,15 +12,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Data
+@Setter @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -29,9 +34,21 @@ public class Pagamento implements Serializable{
 	private Integer id;
 	private EstadoPagamento estado;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "id_pedido")
 	@MapsId
 	private Pedido pedido;
+
+	public Pagamento(EstadoPagamento estado, Pedido pedido) {
+		this.estado = estado;
+		this.pedido = pedido;
+	}
+
+	public Pagamento(EstadoPagamento estado) {
+		this.estado = estado;
+	}
+	
+	
 
 }

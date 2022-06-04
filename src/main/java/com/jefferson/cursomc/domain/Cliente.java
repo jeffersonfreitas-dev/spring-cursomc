@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jefferson.cursomc.exception.RequiredFieldIsNullException;
 
 import lombok.AllArgsConstructor;
@@ -40,9 +41,11 @@ public class Cliente implements Serializable{
 	@CollectionTable(name = "telefone")
 	private Set<String> telefones = new HashSet<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
+
 	public Cliente(String nome, String email, String cpfOuCnpj, Integer tipo) {
 		setNome(nome);
 		this.email = email;

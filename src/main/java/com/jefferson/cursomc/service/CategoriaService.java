@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.jefferson.cursomc.domain.dto.CategoriaResponse;
+import com.jefferson.cursomc.domain.dto.response.CategoriaResponse;
 import com.jefferson.cursomc.exception.IDNotFoundException;
 import com.jefferson.cursomc.repository.CategoriaRepository;
 

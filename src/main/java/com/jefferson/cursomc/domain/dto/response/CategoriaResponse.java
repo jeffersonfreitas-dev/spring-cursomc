@@ -1,4 +1,4 @@
-package com.jefferson.cursomc.domain.dto;
+package com.jefferson.cursomc.domain.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;

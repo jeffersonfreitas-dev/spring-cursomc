@@ -6,10 +6,13 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.NoArgsConstructor;
+
 @Embeddable
-public class PedidoItemPK implements Serializable{
+@NoArgsConstructor
+public class PedidoItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_pedido")
 	private Pedido pedido;
@@ -64,8 +67,5 @@ public class PedidoItemPK implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }
